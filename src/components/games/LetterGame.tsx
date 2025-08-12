@@ -52,7 +52,7 @@ const LetterGame: React.FC<LetterGameProps> = ({ onBack }) => {
     const targetLetter = randomWord.letter;
     
     // Generate wrong options
-    const wrongOptions = [];
+    const wrongOptions: string[] = [];
     while (wrongOptions.length < 3) {
       const randomLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
       if (randomLetter !== targetLetter && !wrongOptions.includes(randomLetter)) {

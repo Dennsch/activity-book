@@ -25,7 +25,7 @@ const MathGame: React.FC<MathGameProps> = ({ onBack }) => {
     const answer = num1 + num2;
     
     // Generate wrong options
-    const wrongOptions = [];
+    const wrongOptions: number[] = [];
     while (wrongOptions.length < 2) {
       const wrong = Math.floor(Math.random() * 11);
       if (wrong !== answer && !wrongOptions.includes(wrong)) {

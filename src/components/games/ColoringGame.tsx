@@ -8,7 +8,6 @@ interface ColoringGameProps {
 interface ColoringArea {
   id: string;
   path: string;
-  color: string;
   originalColor: string;
 }
 
