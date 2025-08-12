@@ -1,0 +1,252 @@
+.math-game {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%);
+  position: relative;
+}
+
+.score-board {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.score, .problems-count {
+  background: white;
+  padding: 15px 25px;
+  border-radius: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #2d5a27;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.problem-container {
+  background: white;
+  border-radius: 25px;
+  padding: 40px;
+  margin: 40px auto;
+  max-width: 600px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.visual-problem {
+  margin-bottom: 30px;
+}
+
+.dinosaur-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.dinosaur-count {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  min-height: 60px;
+  align-items: center;
+  justify-content: center;
+}
+
+.dinosaur-emoji {
+  font-size: 40px;
+  animation: bounce-dino 2s infinite;
+}
+
+.dinosaur-emoji:nth-child(even) {
+  animation-delay: 0.5s;
+}
+
+.plus-sign, .equals-sign {
+  font-size: 48px;
+  font-weight: bold;
+  color: #2d5a27;
+}
+
+.question-mark {
+  font-size: 48px;
+  color: #ff6b6b;
+  font-weight: bold;
+  animation: pulse 1s infinite;
+}
+
+.number-problem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-size: 48px;
+  font-weight: bold;
+  color: #2d5a27;
+}
+
+.number {
+  background: #a8e6cf;
+  padding: 10px 20px;
+  border-radius: 15px;
+  color: white;
+}
+
+.operator, .equals {
+  color: #2d5a27;
+}
+
+.question {
+  color: #ff6b6b;
+  animation: pulse 1s infinite;
+}
+
+.answer-options {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 40px 0;
+  flex-wrap: wrap;
+}
+
+.answer-button {
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  border: none;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  font-size: 36px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.answer-button:hover:not(:disabled) {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+.answer-button:active {
+  transform: translateY(-2px) scale(1.05);
+}
+
+.answer-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.result-message {
+  text-align: center;
+  padding: 30px;
+  border-radius: 20px;
+  margin: 30px auto;
+  max-width: 400px;
+  animation: fadeIn 0.5s ease;
+}
+
+.result-message.correct {
+  background: linear-gradient(135deg, #4ecdc4, #44a08d);
+  color: white;
+}
+
+.result-message.incorrect {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: #333;
+}
+
+.result-emoji {
+  font-size: 60px;
+  margin-bottom: 15px;
+}
+
+.result-text {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.encouragement {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.encouragement p {
+  font-size: 24px;
+  color: #2d5a27;
+  font-weight: bold;
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  display: inline-block;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Animations */
+@keyframes bounce-dino {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .problem-container {
+    padding: 20px;
+    margin: 20px;
+  }
+  
+  .dinosaur-emoji {
+    font-size: 30px;
+  }
+  
+  .plus-sign, .equals-sign, .question-mark {
+    font-size: 36px;
+  }
+  
+  .number-problem {
+    font-size: 36px;
+    gap: 15px;
+  }
+  
+  .answer-button {
+    width: 80px;
+    height: 80px;
+    font-size: 28px;
+  }
+  
+  .score-board {
+    gap: 20px;
+  }
+  
+  .score, .problems-count {
+    font-size: 20px;
+    padding: 10px 20px;
+  }
+}

@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+  min-height: 100vh;
+  color: #333;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Fun, kid-friendly button styles */
+.game-button {
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  border: none;
+  border-radius: 20px;
+  padding: 20px 30px;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.game-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+.game-button:active {
+  transform: translateY(-1px);
+}
+
+/* Colorful backgrounds for different themes */
+.dinosaur-theme {
+  background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%);
+}
+
+.car-theme {
+  background: linear-gradient(135deg, #ff8a80 0%, #ffcc80 100%);
+}
+
+.digger-theme {
+  background: linear-gradient(135deg, #ffb74d 0%, #fff176 100%);
+}
+
+/* Game container styles */
+.game-container {
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-title {
+  font-size: 48px;
+  color: #ff6b6b;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.back-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}

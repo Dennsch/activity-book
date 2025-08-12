@@ -1,0 +1,371 @@
+.codeword-game {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffb74d 0%, #fff176 100%);
+  position: relative;
+}
+
+.codeword-container {
+  background: white;
+  border-radius: 25px;
+  padding: 40px;
+  margin: 40px auto;
+  max-width: 800px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.puzzle-info {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.puzzle-emoji {
+  font-size: 80px;
+  margin-bottom: 20px;
+  animation: bounce 2s infinite;
+}
+
+.puzzle-clue {
+  font-size: 24px;
+  color: #f57c00;
+  font-weight: bold;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.difficulty-badge {
+  display: inline-block;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.word-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.letter-box {
+  width: 60px;
+  height: 60px;
+  border: 3px solid #f57c00;
+  border-radius: 10px;
+  background: white;
+  font-size: 32px;
+  font-weight: bold;
+  color: #f57c00;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.letter-box.filled {
+  background: #fff3e0;
+  border-color: #4ecdc4;
+  color: #4ecdc4;
+  transform: scale(1.05);
+}
+
+.letter-box.empty:hover {
+  background: #fff8f0;
+  transform: scale(1.1);
+}
+
+.hint-section {
+  background: #e3f2fd;
+  border: 2px solid #2196f3;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+  animation: slideDown 0.5s ease;
+}
+
+.hint-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #1976d2;
+  margin-bottom: 10px;
+}
+
+.hint-text {
+  font-size: 18px;
+  color: #1976d2;
+  font-weight: bold;
+}
+
+.alphabet-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.alphabet-button {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #f57c00;
+  border-radius: 10px;
+  background: white;
+  font-size: 20px;
+  font-weight: bold;
+  color: #f57c00;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.alphabet-button:hover:not(:disabled) {
+  background: #f57c00;
+  color: white;
+  transform: scale(1.1);
+}
+
+.alphabet-button:active {
+  transform: scale(0.95);
+}
+
+.alphabet-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.codeword-controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.control-button {
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  border: none;
+  border-radius: 20px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.control-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.control-button:active {
+  transform: translateY(0);
+}
+
+.hint-button {
+  background: linear-gradient(45deg, #2196f3, #21cbf3);
+}
+
+.clear-button {
+  background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+}
+
+.next-button {
+  background: linear-gradient(45deg, #4ecdc4, #44a08d);
+}
+
+.completion-message {
+  background: linear-gradient(135deg, #4ecdc4, #44a08d);
+  color: white;
+  padding: 30px;
+  border-radius: 20px;
+  margin: 30px auto;
+  max-width: 500px;
+  text-align: center;
+  animation: celebrationPop 0.8s ease;
+}
+
+.completion-emoji {
+  font-size: 60px;
+  margin-bottom: 15px;
+  animation: spin 2s infinite;
+}
+
+.completion-text {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.solved-word {
+  font-size: 28px;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 10px 20px;
+  border-radius: 15px;
+  display: inline-block;
+}
+
+.game-instructions {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.instruction {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 250px;
+}
+
+.instruction-icon {
+  font-size: 24px;
+}
+
+.instruction-text {
+  font-size: 16px;
+  font-weight: bold;
+  color: #f57c00;
+}
+
+/* Animations */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-15px);
+  }
+  60% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes celebrationPop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .codeword-container {
+    padding: 20px;
+    margin: 20px;
+  }
+  
+  .puzzle-emoji {
+    font-size: 60px;
+  }
+  
+  .puzzle-clue {
+    font-size: 20px;
+  }
+  
+  .letter-box {
+    width: 50px;
+    height: 50px;
+    font-size: 28px;
+  }
+  
+  .alphabet-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+  
+  .alphabet-button {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+  
+  .codeword-controls {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .control-button {
+    width: 200px;
+  }
+  
+  .game-instructions {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .puzzle-clue {
+    font-size: 18px;
+  }
+  
+  .letter-box {
+    width: 45px;
+    height: 45px;
+    font-size: 24px;
+  }
+  
+  .alphabet-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .alphabet-button {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+  
+  .instruction-text {
+    font-size: 14px;
+  }
+  
+  .completion-text {
+    font-size: 20px;
+  }
+  
+  .solved-word {
+    font-size: 24px;
+  }
+}
