@@ -19,6 +19,48 @@ describe('DotToDotGame', () => {
     expect(screen.getByText('1')).toBeInTheDocument();
   });
 
+  test('has multiple levels available', () => {
+    render(<DotToDotGame onBack={mockOnBack} />);
+    
+    // Initially should show "Happy Star"
+    expect(screen.getByText('⭐ Happy Star')).toBeInTheDocument();
+    
+    // Click through all levels to verify they exist
+    const nextButton = screen.getByText('➡️ Next Picture');
+    
+    // Level 2: Cute House
+    fireEvent.click(nextButton);
+    expect(screen.getByText('🏠 Cute House')).toBeInTheDocument();
+    
+    // Level 3: Friendly Fish
+    fireEvent.click(nextButton);
+    expect(screen.getByText('🐠 Friendly Fish')).toBeInTheDocument();
+    
+    // Level 4: Racing Car
+    fireEvent.click(nextButton);
+    expect(screen.getByText('🏎️ Racing Car')).toBeInTheDocument();
+    
+    // Level 5: Smiling Sun
+    fireEvent.click(nextButton);
+    expect(screen.getByText('☀️ Smiling Sun')).toBeInTheDocument();
+    
+    // Level 6: Cute Cat
+    fireEvent.click(nextButton);
+    expect(screen.getByText('🐱 Cute Cat')).toBeInTheDocument();
+    
+    // Level 7: Rocket Ship
+    fireEvent.click(nextButton);
+    expect(screen.getByText('🚀 Rocket Ship')).toBeInTheDocument();
+    
+    // Level 8: Happy Butterfly
+    fireEvent.click(nextButton);
+    expect(screen.getByText('🦋 Happy Butterfly')).toBeInTheDocument();
+    
+    // Should cycle back to first level
+    fireEvent.click(nextButton);
+    expect(screen.getByText('⭐ Happy Star')).toBeInTheDocument();
+  });
+
   test('calls onBack when back button is clicked', () => {
     render(<DotToDotGame onBack={mockOnBack} />);
     
@@ -217,6 +259,166 @@ describe('DotToDotGame', () => {
         expect(dot1Index).toBeGreaterThan(dot9Index);
       }
     }
+  });
+
+  test('enhanced visibility updates as dots are connected', () => {
+    render(<DotToDotGame onBack={mockOnBack} />);
+    
+    const svg = document.querySelector('.dot-to-dot-svg');
+    expect(svg).toBeInTheDocument();
+    
+    if (svg) {
+      // Initially, dot 1 should have enhanced visibility
+      let glowElements = svg.querySelectorAll('.dot-glow');
+      let pulseRingElements = svg.querySelectorAll('.dot-pulse-ring');
+      expect(glowElements.length).toBe(1);
+      expect(pulseRingElements.length).toBe(1);
+      
+      // Connect dot 1
+      const dots = screen.getAllByText('1');
+      const dotNumber1 = dots.find(element => 
+        element.tagName === 'text' || element.closest('g')
+      );
+      
+      if (dotNumber1) {
+        fireEvent.click(dotNumber1);
+        
+        // Now dot 2 should have enhanced visibility
+        expect(screen.getByText('Connected: 1/10')).toBeInTheDocument();
+        
+        // Check that visibility elements still exist (now for dot 2)
+        glowElements = svg.querySelectorAll('.dot-glow');
+        pulseRingElements = svg.querySelectorAll('.dot-pulse-ring');
+        expect(glowElements.length).toBe(1);
+        expect(pulseRingElements.length).toBe(1);
+      }
+    }
+  });
+
+  test('handles overlapping dots in Happy Butterfly picture', () => {
+    render(<DotToDotGame onBack={mockOnBack} />);
+    
+    // Navigate to "Happy Butterfly" which has overlapping dots (22 and 23 at same position)
+    const nextButton = screen.getByText('➡️ Next Picture');
+    // Click 7 times to get to Happy Butterfly (8th level)
+    for (let i = 0; i < 7; i++) {
+      fireEvent.click(nextButton);
+    }
+    
+    expect(screen.getByText('🦋 Happy Butterfly')).toBeInTheDocument();
+    
+    // Get all SVG elements
+    const svg = document.querySelector('.dot-to-dot-svg');
+    expect(svg).toBeInTheDocument();
+    
+    if (svg) {
+      const textElements = svg.querySelectorAll('text');
+      
+      // Find dots with numbers 22 and 23 (they should be at the same position)
+      let dot22Element = null;
+      let dot23Element = null;
+      let dot22Index = -1;
+      let dot23Index = -1;
+      
+      textElements.forEach((textEl, index) => {
+        if (textEl.textContent === '22') {
+          dot22Element = textEl;
+          dot22Index = index;
+        }
+        if (textEl.textContent === '23') {
+          dot23Element = textEl;
+          dot23Index = index;
+        }
+      });
+      
+      // Verify both dots exist
+      expect(dot22Element).toBeTruthy();
+      expect(dot23Element).toBeTruthy();
+      
+      if (dot22Element && dot23Element) {
+        // Get their positions
+        const dot22X = dot22Element.getAttribute('x');
+        const dot22Y = dot22Element.getAttribute('y');
+        const dot23X = dot23Element.getAttribute('x');
+        const dot23Y = dot23Element.getAttribute('y');
+        
+        // Verify they are at the same position (250, 160 in the data)
+        expect(dot22X).toBe(dot23X);
+        expect(dot22Y).toBe(dot23Y);
+        expect(dot22X).toBe('250');
+        expect(dot22Y).toBe('160');
+        
+        // Verify that dot 22 (smaller number) appears later in the DOM order
+        expect(dot22Index).toBeGreaterThan(dot23Index);
+      }
+    }
+  });
+
+  test('current dot has enhanced visibility classes', () => {
+    render(<DotToDotGame onBack={mockOnBack} />);
+    
+    const svg = document.querySelector('.dot-to-dot-svg');
+    expect(svg).toBeInTheDocument();
+    
+    if (svg) {
+      // Find the current dot (should be dot 1)
+      const circles = svg.querySelectorAll('circle');
+      const textElements = svg.querySelectorAll('text');
+      
+      // Look for the current dot's circle
+      let currentDotCircle = null;
+      let currentDotText = null;
+      
+      circles.forEach(circle => {
+        if (circle.classList.contains('current-target')) {
+          currentDotCircle = circle;
+        }
+      });
+      
+      textElements.forEach(text => {
+        if (text.classList.contains('current-number')) {
+          currentDotText = text;
+        }
+      });
+      
+      // Verify enhanced visibility elements exist
+      expect(currentDotCircle).toBeTruthy();
+      expect(currentDotText).toBeTruthy();
+      
+      // Check for glow and pulse ring elements
+      const glowElements = svg.querySelectorAll('.dot-glow');
+      const pulseRingElements = svg.querySelectorAll('.dot-pulse-ring');
+      
+      expect(glowElements.length).toBeGreaterThan(0);
+      expect(pulseRingElements.length).toBeGreaterThan(0);
+    }
+  });
+
+  test('levels have varying complexity', () => {
+    render(<DotToDotGame onBack={mockOnBack} />);
+    
+    const nextButton = screen.getByText('➡️ Next Picture');
+    
+    // Test different levels have different dot counts
+    const levelTests = [
+      { name: '⭐ Happy Star', expectedDots: 10 },
+      { name: '🏠 Cute House', expectedDots: 10 },
+      { name: '🐠 Friendly Fish', expectedDots: 12 },
+      { name: '🏎️ Racing Car', expectedDots: 15 },
+      { name: '☀️ Smiling Sun', expectedDots: 14 },
+      { name: '🐱 Cute Cat', expectedDots: 17 },
+      { name: '🚀 Rocket Ship', expectedDots: 22 },
+      { name: '🦋 Happy Butterfly', expectedDots: 23 }
+    ];
+    
+    levelTests.forEach((level, index) => {
+      if (index > 0) {
+        fireEvent.click(nextButton);
+      }
+      
+      expect(screen.getByText(level.name)).toBeInTheDocument();
+      expect(screen.getByText(`Connected: 0/${level.expectedDots}`)).toBeInTheDocument();
+    });
   });
 
   test('non-overlapping dots maintain their original relative order', () => {

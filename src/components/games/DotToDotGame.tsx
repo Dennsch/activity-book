@@ -80,6 +80,133 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
         { id: 11, x: 30, y: 150, number: 11 },
         { id: 12, x: 50, y: 170, number: 12 }
       ]
+    },
+    {
+      name: 'Racing Car',
+      emoji: '🏎️',
+      viewBox: '0 0 450 300',
+      dots: [
+        { id: 1, x: 100, y: 180, number: 1 },
+        { id: 2, x: 120, y: 160, number: 2 },
+        { id: 3, x: 180, y: 140, number: 3 },
+        { id: 4, x: 250, y: 140, number: 4 },
+        { id: 5, x: 320, y: 160, number: 5 },
+        { id: 6, x: 340, y: 180, number: 6 },
+        { id: 7, x: 340, y: 220, number: 7 },
+        { id: 8, x: 300, y: 240, number: 8 },
+        { id: 9, x: 280, y: 260, number: 9 },
+        { id: 10, x: 160, y: 260, number: 10 },
+        { id: 11, x: 140, y: 240, number: 11 },
+        { id: 12, x: 100, y: 220, number: 12 },
+        { id: 13, x: 100, y: 180, number: 13 },
+        { id: 14, x: 130, y: 200, number: 14 },
+        { id: 15, x: 310, y: 200, number: 15 }
+      ]
+    },
+    {
+      name: 'Smiling Sun',
+      emoji: '☀️',
+      viewBox: '0 0 400 400',
+      dots: [
+        { id: 1, x: 200, y: 80, number: 1 },
+        { id: 2, x: 280, y: 120, number: 2 },
+        { id: 3, x: 320, y: 200, number: 3 },
+        { id: 4, x: 280, y: 280, number: 4 },
+        { id: 5, x: 200, y: 320, number: 5 },
+        { id: 6, x: 120, y: 280, number: 6 },
+        { id: 7, x: 80, y: 200, number: 7 },
+        { id: 8, x: 120, y: 120, number: 8 },
+        { id: 9, x: 200, y: 80, number: 9 },
+        { id: 10, x: 170, y: 170, number: 10 },
+        { id: 11, x: 230, y: 170, number: 11 },
+        { id: 12, x: 170, y: 230, number: 12 },
+        { id: 13, x: 200, y: 250, number: 13 },
+        { id: 14, x: 230, y: 230, number: 14 }
+      ]
+    },
+    {
+      name: 'Cute Cat',
+      emoji: '🐱',
+      viewBox: '0 0 400 400',
+      dots: [
+        { id: 1, x: 150, y: 100, number: 1 },
+        { id: 2, x: 120, y: 80, number: 2 },
+        { id: 3, x: 140, y: 60, number: 3 },
+        { id: 4, x: 200, y: 50, number: 4 },
+        { id: 5, x: 260, y: 60, number: 5 },
+        { id: 6, x: 280, y: 80, number: 6 },
+        { id: 7, x: 250, y: 100, number: 7 },
+        { id: 8, x: 280, y: 140, number: 8 },
+        { id: 9, x: 300, y: 200, number: 9 },
+        { id: 10, x: 280, y: 260, number: 10 },
+        { id: 11, x: 200, y: 280, number: 11 },
+        { id: 12, x: 120, y: 260, number: 12 },
+        { id: 13, x: 100, y: 200, number: 13 },
+        { id: 14, x: 120, y: 140, number: 14 },
+        { id: 15, x: 150, y: 100, number: 15 },
+        { id: 16, x: 170, y: 120, number: 16 },
+        { id: 17, x: 230, y: 120, number: 17 }
+      ]
+    },
+    {
+      name: 'Rocket Ship',
+      emoji: '🚀',
+      viewBox: '0 0 400 500',
+      dots: [
+        { id: 1, x: 200, y: 50, number: 1 },
+        { id: 2, x: 220, y: 80, number: 2 },
+        { id: 3, x: 240, y: 120, number: 3 },
+        { id: 4, x: 250, y: 180, number: 4 },
+        { id: 5, x: 250, y: 250, number: 5 },
+        { id: 6, x: 240, y: 320, number: 6 },
+        { id: 7, x: 220, y: 360, number: 7 },
+        { id: 8, x: 280, y: 380, number: 8 },
+        { id: 9, x: 300, y: 420, number: 9 },
+        { id: 10, x: 280, y: 450, number: 10 },
+        { id: 11, x: 220, y: 430, number: 11 },
+        { id: 12, x: 180, y: 430, number: 12 },
+        { id: 13, x: 120, y: 450, number: 13 },
+        { id: 14, x: 100, y: 420, number: 14 },
+        { id: 15, x: 120, y: 380, number: 15 },
+        { id: 16, x: 180, y: 360, number: 16 },
+        { id: 17, x: 160, y: 320, number: 17 },
+        { id: 18, x: 150, y: 250, number: 18 },
+        { id: 19, x: 150, y: 180, number: 19 },
+        { id: 20, x: 160, y: 120, number: 20 },
+        { id: 21, x: 180, y: 80, number: 21 },
+        { id: 22, x: 200, y: 50, number: 22 }
+      ]
+    },
+    {
+      name: 'Happy Butterfly',
+      emoji: '🦋',
+      viewBox: '0 0 500 400',
+      dots: [
+        { id: 1, x: 250, y: 100, number: 1 },
+        { id: 2, x: 230, y: 120, number: 2 },
+        { id: 3, x: 180, y: 100, number: 3 },
+        { id: 4, x: 120, y: 120, number: 4 },
+        { id: 5, x: 80, y: 160, number: 5 },
+        { id: 6, x: 100, y: 200, number: 6 },
+        { id: 7, x: 150, y: 220, number: 7 },
+        { id: 8, x: 200, y: 200, number: 8 },
+        { id: 9, x: 220, y: 240, number: 9 },
+        { id: 10, x: 240, y: 280, number: 10 },
+        { id: 11, x: 250, y: 320, number: 11 },
+        { id: 12, x: 260, y: 280, number: 12 },
+        { id: 13, x: 280, y: 240, number: 13 },
+        { id: 14, x: 300, y: 200, number: 14 },
+        { id: 15, x: 350, y: 220, number: 15 },
+        { id: 16, x: 400, y: 200, number: 16 },
+        { id: 17, x: 420, y: 160, number: 17 },
+        { id: 18, x: 380, y: 120, number: 18 },
+        { id: 19, x: 320, y: 100, number: 19 },
+        { id: 20, x: 270, y: 120, number: 20 },
+        { id: 21, x: 250, y: 100, number: 21 },
+        // Overlapping dots to test visibility
+        { id: 22, x: 250, y: 160, number: 22 },
+        { id: 23, x: 250, y: 160, number: 23 }
+      ]
     }
   ];
 
@@ -148,7 +275,7 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
     if (connectedDots.includes(dotNumber)) {
       return 'dot connected';
     } else if (dotNumber === nextDotToConnect) {
-      return 'dot next';
+      return 'dot next current-target';
     } else {
       return 'dot';
     }
@@ -223,6 +350,32 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
               {/* Draw the dots */}
               {getSortedDotsForRendering().map((dot) => (
                 <g key={dot.id}>
+                  {/* Add a glow effect for the current dot */}
+                  {dot.number === nextDotToConnect && (
+                    <circle
+                      cx={dot.x}
+                      cy={dot.y}
+                      r="25"
+                      className="dot-glow"
+                      fill="none"
+                      stroke="#ff6b6b"
+                      strokeWidth="3"
+                      opacity="0.6"
+                    />
+                  )}
+                  {/* Add a pulsing ring for the current dot */}
+                  {dot.number === nextDotToConnect && (
+                    <circle
+                      cx={dot.x}
+                      cy={dot.y}
+                      r="20"
+                      className="dot-pulse-ring"
+                      fill="none"
+                      stroke="#ff8e53"
+                      strokeWidth="2"
+                      opacity="0.8"
+                    />
+                  )}
                   <circle
                     cx={dot.x}
                     cy={dot.y}
@@ -235,7 +388,7 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
                     y={dot.y}
                     textAnchor="middle"
                     dominantBaseline="central"
-                    className="dot-number"
+                    className={`dot-number ${dot.number === nextDotToConnect ? 'current-number' : ''}`}
                     onClick={() => handleDotClick(dot.number)}
                   >
                     {dot.number}
