@@ -81,6 +81,26 @@
   stroke: #d32f2f;
   stroke-width: 3;
   animation: nextDotPulse 1s infinite;
+  z-index: 1000;
+}
+
+.dot.current-target {
+  filter: drop-shadow(0 0 8px #ff6b6b);
+}
+
+.dot-glow {
+  animation: glowPulse 2s infinite;
+}
+
+.dot-pulse-ring {
+  animation: ringPulse 1.5s infinite;
+}
+
+.current-number {
+  font-weight: 900;
+  font-size: 18px;
+  fill: #fff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
 }
 
 .dot.connected {
@@ -214,6 +234,37 @@
   50% {
     r: 20;
     fill: #ff8e53;
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    r: 25;
+    opacity: 0.3;
+    stroke-width: 2;
+  }
+  50% {
+    r: 30;
+    opacity: 0.8;
+    stroke-width: 4;
+  }
+}
+
+@keyframes ringPulse {
+  0% {
+    r: 18;
+    opacity: 0.8;
+    stroke-width: 3;
+  }
+  50% {
+    r: 22;
+    opacity: 0.4;
+    stroke-width: 2;
+  }
+  100% {
+    r: 25;
+    opacity: 0;
+    stroke-width: 1;
   }
 }
 
