@@ -25,8 +25,9 @@ const MazeGame: React.FC<MazeGameProps> = ({ onBack }) => {
   const [isComplete, setIsComplete] = useState(false);
   const [score, setScore] = useState(0);
   const [level, setLevel] = useState(1);
+  const [collisionFeedback, setCollisionFeedback] = useState(false);
 
-  // Simple maze patterns for 5-year-olds
+  // Expanded maze patterns for progressive difficulty
   const mazePatterns = [
     // Level 1 - Very simple
     {
@@ -66,12 +67,130 @@ const MazeGame: React.FC<MazeGameProps> = ({ onBack }) => {
       ],
       start: { x: 0, y: 0 },
       end: { x: 6, y: 6 }
+    },
+    // Level 4 - Spiral pattern
+    {
+      grid: [
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 1, 1, 0],
+        [0, 1, 0, 0, 0, 1, 0],
+        [0, 1, 0, 1, 0, 1, 0],
+        [0, 1, 0, 0, 0, 1, 0],
+        [0, 1, 1, 1, 1, 1, 0],
+        [0, 0, 0, 0, 0, 0, 0]
+      ],
+      start: { x: 0, y: 0 },
+      end: { x: 3, y: 3 }
+    },
+    // Level 5 - Multiple paths
+    {
+      grid: [
+        [0, 1, 0, 1, 0, 1, 0, 0],
+        [0, 1, 0, 1, 0, 1, 1, 0],
+        [0, 0, 0, 0, 0, 0, 1, 0],
+        [1, 1, 1, 0, 1, 0, 1, 0],
+        [0, 0, 0, 0, 1, 0, 0, 0],
+        [0, 1, 1, 0, 1, 1, 1, 1],
+        [0, 0, 1, 0, 0, 0, 0, 0],
+        [1, 0, 0, 0, 1, 1, 1, 0]
+      ],
+      start: { x: 0, y: 0 },
+      end: { x: 7, y: 7 }
+    },
+    // Level 6 - Zigzag challenge
+    {
+      grid: [
+        [0, 0, 1, 1, 1, 1, 1, 1],
+        [1, 0, 0, 0, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1, 1, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 1, 1, 1, 1, 1, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0],
+        [1, 1, 1, 1, 1, 1, 1, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0]
+      ],
+      start: { x: 0, y: 0 },
+      end: { x: 7, y: 7 }
+    },
+    // Level 7 - Cross pattern
+    {
+      grid: [
+        [0, 0, 0, 1, 0, 0, 0],
+        [1, 1, 0, 1, 0, 1, 1],
+        [0, 0, 0, 1, 0, 0, 0],
+        [1, 1, 1, 0, 1, 1, 1],
+        [0, 0, 0, 1, 0, 0, 0],
+        [1, 1, 0, 1, 0, 1, 1],
+        [0, 0, 0, 1, 0, 0, 0]
+      ],
+      start: { x: 0, y: 0 },
+      end: { x: 6, y: 6 }
+    },
+    // Level 8 - Complex branching
+    {
+      grid: [
+        [0, 1, 0, 0, 0, 1, 0, 1, 0],
+        [0, 1, 0, 1, 0, 1, 0, 1, 0],
+        [0, 0, 0, 1, 0, 0, 0, 0, 0],
+        [1, 1, 1, 1, 1, 1, 1, 0, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1],
+        [0, 0, 0, 1, 0, 0, 0, 0, 0],
+        [1, 1, 0, 1, 0, 1, 1, 1, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ],
+      start: { x: 0, y: 0 },
+      end: { x: 8, y: 8 }
+    },
+    // Level 9 - Maze with dead ends
+    {
+      grid: [
+        [0, 0, 1, 0, 0, 0, 1, 0, 0],
+        [1, 0, 1, 0, 1, 0, 1, 0, 1],
+        [1, 0, 0, 0, 1, 0, 0, 0, 1],
+        [1, 1, 1, 0, 1, 1, 1, 0, 1],
+        [0, 0, 0, 0, 0, 0, 1, 0, 1],
+        [0, 1, 1, 1, 1, 0, 1, 0, 0],
+        [0, 0, 0, 0, 1, 0, 1, 1, 0],
+        [1, 1, 1, 0, 1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 1, 1, 1, 0]
+      ],
+      start: { x: 0, y: 0 },
+      end: { x: 8, y: 8 }
+    },
+    // Level 10 - Ultimate challenge
+    {
+      grid: [
+        [0, 1, 0, 1, 0, 1, 0, 1, 0, 0],
+        [0, 1, 0, 1, 0, 1, 0, 1, 1, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+        [1, 1, 1, 0, 1, 1, 1, 0, 1, 0],
+        [0, 0, 1, 0, 1, 0, 0, 0, 0, 0],
+        [0, 1, 1, 0, 1, 0, 1, 1, 1, 1],
+        [0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [0, 1, 1, 1, 1, 1, 1, 1, 0, 0]
+      ],
+      start: { x: 0, y: 0 },
+      end: { x: 9, y: 9 }
     }
   ];
 
   const generateMaze = (): Maze => {
     const pattern = mazePatterns[Math.min(level - 1, mazePatterns.length - 1)];
-    const cellSize = Math.min(60, Math.floor(400 / pattern.grid.length));
+    
+    // Calculate cell size based on screen size and maze dimensions
+    const maxCanvasSize = Math.min(
+      window.innerWidth * 0.9, // 90% of screen width
+      window.innerHeight * 0.5, // 50% of screen height
+      500 // Maximum size for desktop
+    );
+    
+    const cellSize = Math.max(
+      25, // Minimum cell size for touch interaction
+      Math.floor(maxCanvasSize / Math.max(pattern.grid.length, pattern.grid[0].length))
+    );
     
     return {
       ...pattern,
@@ -83,6 +202,18 @@ const MazeGame: React.FC<MazeGameProps> = ({ onBack }) => {
     setCurrentMaze(generateMaze());
     setPath([]);
     setIsComplete(false);
+  }, [level]);
+
+  // Handle window resize for responsive design
+  useEffect(() => {
+    const handleResize = () => {
+      if (currentMaze) {
+        setCurrentMaze(generateMaze());
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [level]);
 
   useEffect(() => {
@@ -159,11 +290,22 @@ const MazeGame: React.FC<MazeGameProps> = ({ onBack }) => {
     }
   };
 
-  const getCanvasPosition = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  const getCanvasPosition = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
     if (!canvas) return { x: 0, y: 0 };
     
     const rect = canvas.getBoundingClientRect();
+    
+    // Handle touch events
+    if ('touches' in e) {
+      const touch = e.touches[0] || e.changedTouches[0];
+      return {
+        x: touch.clientX - rect.left,
+        y: touch.clientY - rect.top
+      };
+    }
+    
+    // Handle mouse events
     return {
       x: e.clientX - rect.left,
       y: e.clientY - rect.top
@@ -184,6 +326,45 @@ const MazeGame: React.FC<MazeGameProps> = ({ onBack }) => {
     );
   };
 
+  // Enhanced collision detection - checks if a line segment intersects with any walls
+  const checkLineCollision = (x1: number, y1: number, x2: number, y2: number): boolean => {
+    if (!currentMaze) return false;
+    
+    const { grid, cellSize } = currentMaze;
+    
+    // Sample points along the line to check for wall collisions
+    const distance = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+    const steps = Math.ceil(distance / (cellSize / 4)); // Check every quarter cell
+    
+    for (let i = 0; i <= steps; i++) {
+      const t = i / steps;
+      const x = x1 + t * (x2 - x1);
+      const y = y1 + t * (y2 - y1);
+      
+      const col = Math.floor(x / cellSize);
+      const row = Math.floor(y / cellSize);
+      
+      // Check if point is outside bounds or hits a wall
+      if (
+        row < 0 || row >= grid.length ||
+        col < 0 || col >= grid[0].length ||
+        grid[row][col] === 1
+      ) {
+        return true; // Collision detected
+      }
+    }
+    
+    return false; // No collision
+  };
+
+  // Check if path from start to current position is valid
+  const isValidPath = (newPoint: Point): boolean => {
+    if (path.length === 0) return isValidPosition(newPoint.x, newPoint.y);
+    
+    const lastPoint = path[path.length - 1];
+    return !checkLineCollision(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y);
+  };
+
   const checkWin = (x: number, y: number): boolean => {
     if (!currentMaze) return false;
     
@@ -194,7 +375,8 @@ const MazeGame: React.FC<MazeGameProps> = ({ onBack }) => {
     return col === end.x && row === end.y;
   };
 
-  const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  const handleStart = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
+    e.preventDefault(); // Prevent scrolling on touch devices
     const pos = getCanvasPosition(e);
     if (isValidPosition(pos.x, pos.y)) {
       setIsDrawing(true);
@@ -202,11 +384,14 @@ const MazeGame: React.FC<MazeGameProps> = ({ onBack }) => {
     }
   };
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  const handleMove = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
     if (!isDrawing) return;
+    e.preventDefault(); // Prevent scrolling on touch devices
     
     const pos = getCanvasPosition(e);
-    if (isValidPosition(pos.x, pos.y)) {
+    
+    // Use enhanced collision detection
+    if (isValidPath(pos)) {
       setPath(prev => [...prev, pos]);
       
       if (checkWin(pos.x, pos.y)) {
@@ -215,24 +400,47 @@ const MazeGame: React.FC<MazeGameProps> = ({ onBack }) => {
         setScore(score + 10);
         
         setTimeout(() => {
-          if (level < 3) {
+          if (level < mazePatterns.length) {
             setLevel(level + 1);
           } else {
+            // Completed all levels - show completion message and restart
+            alert('🎉 Congratulations! You completed all levels! Starting over with bonus points!');
             setLevel(1);
+            setScore(score + 50); // Bonus for completing all levels
           }
         }, 2000);
       }
+    } else {
+      // Collision detected - stop drawing and provide feedback
+      setIsDrawing(false);
+      setCollisionFeedback(true);
+      
+      // Clear feedback after a short time
+      setTimeout(() => {
+        setCollisionFeedback(false);
+      }, 300);
     }
   };
 
-  const handleMouseUp = () => {
+  const handleEnd = () => {
     setIsDrawing(false);
   };
+
+  // Legacy mouse event handlers for backward compatibility
+  const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => handleStart(e);
+  const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => handleMove(e);
+  const handleMouseUp = () => handleEnd();
+
+  // Touch event handlers
+  const handleTouchStart = (e: React.TouchEvent<HTMLCanvasElement>) => handleStart(e);
+  const handleTouchMove = (e: React.TouchEvent<HTMLCanvasElement>) => handleMove(e);
+  const handleTouchEnd = () => handleEnd();
 
   const resetMaze = () => {
     setPath([]);
     setIsComplete(false);
     setIsDrawing(false);
+    setCollisionFeedback(false);
   };
 
   if (!currentMaze) return <div>Loading...</div>;
@@ -259,11 +467,16 @@ const MazeGame: React.FC<MazeGameProps> = ({ onBack }) => {
             ref={canvasRef}
             width={currentMaze.grid[0].length * currentMaze.cellSize}
             height={currentMaze.grid.length * currentMaze.cellSize}
-            className="maze-canvas"
+            className={`maze-canvas ${collisionFeedback ? 'collision-feedback' : ''}`}
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            onTouchCancel={handleTouchEnd}
+            style={{ touchAction: 'none' }} // Prevent default touch behaviors
           />
           
           <div className="maze-controls">
