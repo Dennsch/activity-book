@@ -32,10 +32,32 @@
   margin: 20px 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background: white;
+  max-width: 100%;
+  height: auto;
+  touch-action: none; /* Prevent default touch behaviors */
 }
 
 .maze-canvas:hover {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Remove cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .maze-canvas {
+    cursor: default;
+  }
+}
+
+/* Collision feedback animation */
+.maze-canvas.collision-feedback {
+  animation: collisionShake 0.3s ease-in-out;
+  border-color: #ff4444;
+}
+
+@keyframes collisionShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
 }
 
 .maze-controls {
@@ -158,8 +180,9 @@
 /* Responsive design */
 @media (max-width: 768px) {
   .maze-container {
-    padding: 20px;
-    margin: 20px;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 20px;
   }
   
   .maze-instructions p {
@@ -167,18 +190,29 @@
   }
   
   .maze-canvas {
-    max-width: 100%;
-    height: auto;
+    max-width: calc(100vw - 60px);
+    margin: 15px 0;
+    border-width: 3px;
+  }
+  
+  .control-button {
+    font-size: 18px;
+    padding: 15px 25px;
+    min-height: 48px; /* Minimum touch target size */
+    min-width: 120px;
   }
   
   .game-tips {
     flex-direction: column;
     align-items: center;
     gap: 15px;
+    margin-top: 30px;
   }
   
   .tip {
     max-width: 300px;
+    padding: 15px;
+    min-height: 48px; /* Better touch targets */
   }
   
   .completion-text {
@@ -191,16 +225,69 @@
 }
 
 @media (max-width: 480px) {
+  .maze-container {
+    padding: 10px;
+    margin: 10px;
+  }
+  
   .maze-instructions p {
     font-size: 16px;
+    margin: 8px 0;
+  }
+  
+  .maze-canvas {
+    max-width: calc(100vw - 40px);
+    margin: 10px 0;
   }
   
   .control-button {
-    font-size: 18px;
-    padding: 12px 24px;
+    font-size: 16px;
+    padding: 12px 20px;
+    min-height: 44px;
+    min-width: 100px;
+  }
+  
+  .tip {
+    max-width: 280px;
+    padding: 12px;
   }
   
   .tip-text {
     font-size: 14px;
+  }
+  
+  .completion-message {
+    padding: 20px;
+    margin: 20px auto;
+  }
+  
+  .completion-text {
+    font-size: 18px;
+  }
+  
+  .celebration {
+    font-size: 24px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 320px) {
+  .maze-container {
+    padding: 8px;
+    margin: 8px;
+  }
+  
+  .maze-canvas {
+    max-width: calc(100vw - 32px);
+  }
+  
+  .control-button {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+  
+  .tip {
+    max-width: 260px;
+    padding: 10px;
   }
 }
