@@ -154,6 +154,27 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
     }
   };
 
+  // Helper function to sort dots so that when dots are in the same position,
+  // the smaller numbered dot appears on top (rendered last)
+  const getSortedDotsForRendering = (): Dot[] => {
+    const sortedDots = [...currentPic.dots];
+    
+    // Sort dots so that for dots with the same position, smaller numbers come last
+    // This ensures smaller numbered dots render on top when overlapping
+    sortedDots.sort((a, b) => {
+      // If dots are in the same position
+      if (a.x === b.x && a.y === b.y) {
+        // Sort by number in descending order (larger numbers first)
+        // This way smaller numbers will be rendered last and appear on top
+        return b.number - a.number;
+      }
+      // For dots in different positions, maintain original order based on id
+      return a.id - b.id;
+    });
+    
+    return sortedDots;
+  };
+
   return (
     <div className="dot-to-dot-game car-theme">
       <button className="back-button" onClick={onBack}>←</button>
@@ -200,7 +221,7 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
               )}
               
               {/* Draw the dots */}
-              {currentPic.dots.map((dot) => (
+              {getSortedDotsForRendering().map((dot) => (
                 <g key={dot.id}>
                   <circle
                     cx={dot.x}
