@@ -29,7 +29,7 @@ A colorful and engaging educational activity book app designed specifically for 
 - **Completion tracking** and encouragement
 
 ### 🔗 Connect the Dots
-- **Number sequence learning** (1-12)
+- **Reverse number sequence learning** (start high, go low!)
 - **Fine motor skills** development
 - **Pattern recognition** as pictures emerge
 - **Multiple themed pictures** (stars, houses, fish)
