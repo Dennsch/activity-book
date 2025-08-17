@@ -23,7 +23,7 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
   const svgRef = useRef<SVGSVGElement>(null);
   const [currentPicture, setCurrentPicture] = useState(0);
   const [connectedDots, setConnectedDots] = useState<number[]>([]);
-  const [nextDotToConnect, setNextDotToConnect] = useState(1);
+  const [nextDotToConnect, setNextDotToConnect] = useState(10); // Will be updated in useEffect
   const [isComplete, setIsComplete] = useState(false);
   const [completedPictures, setCompletedPictures] = useState(0);
 
@@ -212,21 +212,33 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
 
   const currentPic = pictures[currentPicture];
 
+  // Helper function to get the maximum dot number for the current picture
+  const getMaxDotNumber = (): number => {
+    return Math.max(...currentPic.dots.map(dot => dot.number));
+  };
+
   useEffect(() => {
     setConnectedDots([]);
-    setNextDotToConnect(1);
+    setNextDotToConnect(getMaxDotNumber());
     setIsComplete(false);
   }, [currentPicture]);
+
+  // Initialize the game state on first mount
+  useEffect(() => {
+    setNextDotToConnect(getMaxDotNumber());
+  }, []);
 
   const handleDotClick = (dotNumber: number) => {
     if (dotNumber === nextDotToConnect) {
       const newConnectedDots = [...connectedDots, dotNumber];
       setConnectedDots(newConnectedDots);
-      setNextDotToConnect(nextDotToConnect + 1);
       
-      if (newConnectedDots.length === currentPic.dots.length) {
+      if (dotNumber === 1) {
+        // Game is complete when we connect dot 1 (the last dot in reverse order)
         setIsComplete(true);
         setCompletedPictures(prev => prev + 1);
+      } else {
+        setNextDotToConnect(nextDotToConnect - 1);
       }
     }
   };
@@ -267,7 +279,7 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
 
   const resetPicture = () => {
     setConnectedDots([]);
-    setNextDotToConnect(1);
+    setNextDotToConnect(getMaxDotNumber());
     setIsComplete(false);
   };
 
@@ -323,9 +335,11 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
             <h2 className="picture-title">
               {currentPic.emoji} {currentPic.name}
             </h2>
-            <p className="instruction">
-              Click on dot number <span className="next-number">{nextDotToConnect}</span>!
-            </p>
+            {!isComplete && (
+              <p className="instruction">
+                Click on dot number <span className="next-number">{nextDotToConnect}</span>!
+              </p>
+            )}
           </div>
 
           <div className="drawing-area">
@@ -421,7 +435,7 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
         <div className="game-tips">
           <div className="tip">
             <span className="tip-icon">🔢</span>
-            <span className="tip-text">Connect the dots in number order!</span>
+            <span className="tip-text">Connect the dots in reverse order - start high, go low!</span>
           </div>
           <div className="tip">
             <span className="tip-icon">✨</span>

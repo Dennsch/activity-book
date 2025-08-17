@@ -16,7 +16,7 @@ describe('DotToDotGame', () => {
     expect(screen.getByText('🔗 Connect the Dots! 🔗')).toBeInTheDocument();
     expect(screen.getByText('Connected: 0/10')).toBeInTheDocument();
     expect(screen.getByText('Click on dot number')).toBeInTheDocument();
-    expect(screen.getByText('1')).toBeInTheDocument();
+    expect(screen.getByText('10')).toBeInTheDocument(); // Should start with highest number
   });
 
   test('has multiple levels available', () => {
@@ -70,22 +70,22 @@ describe('DotToDotGame', () => {
     expect(mockOnBack).toHaveBeenCalledTimes(1);
   });
 
-  test('allows connecting dots in correct order', () => {
+  test('allows connecting dots in correct reverse order', () => {
     render(<DotToDotGame onBack={mockOnBack} />);
     
-    // Initially should show "Click on dot number 1"
-    expect(screen.getByText('1')).toBeInTheDocument();
+    // Initially should show "Click on dot number 10" (highest number)
+    expect(screen.getByText('10')).toBeInTheDocument();
     
-    // Find and click dot number 1
-    const dots = screen.getAllByText('1');
-    const dotNumber1 = dots.find(element => 
+    // Find and click dot number 10
+    const dots = screen.getAllByText('10');
+    const dotNumber10 = dots.find(element => 
       element.tagName === 'text' || element.closest('g')
     );
     
-    if (dotNumber1) {
-      fireEvent.click(dotNumber1);
+    if (dotNumber10) {
+      fireEvent.click(dotNumber10);
       
-      // After clicking dot 1, should ask for dot 2
+      // After clicking dot 10, should ask for dot 9
       expect(screen.getByText('Connected: 1/10')).toBeInTheDocument();
     }
   });
@@ -93,32 +93,32 @@ describe('DotToDotGame', () => {
   test('does not allow connecting dots out of order', () => {
     render(<DotToDotGame onBack={mockOnBack} />);
     
-    // Try to click dot number 2 first (should not work)
-    const dots = screen.getAllByText('2');
-    const dotNumber2 = dots.find(element => 
+    // Try to click dot number 9 first (should not work, need to start with 10)
+    const dots = screen.getAllByText('9');
+    const dotNumber9 = dots.find(element => 
       element.tagName === 'text' || element.closest('g')
     );
     
-    if (dotNumber2) {
-      fireEvent.click(dotNumber2);
+    if (dotNumber9) {
+      fireEvent.click(dotNumber9);
       
-      // Should still be asking for dot 1
+      // Should still be asking for dot 10
       expect(screen.getByText('Connected: 0/10')).toBeInTheDocument();
-      expect(screen.getByText('1')).toBeInTheDocument();
+      expect(screen.getByText('10')).toBeInTheDocument();
     }
   });
 
   test('resets the game when reset button is clicked', () => {
     render(<DotToDotGame onBack={mockOnBack} />);
     
-    // Connect first dot
-    const dots = screen.getAllByText('1');
-    const dotNumber1 = dots.find(element => 
+    // Connect first dot (highest number)
+    const dots = screen.getAllByText('10');
+    const dotNumber10 = dots.find(element => 
       element.tagName === 'text' || element.closest('g')
     );
     
-    if (dotNumber1) {
-      fireEvent.click(dotNumber1);
+    if (dotNumber10) {
+      fireEvent.click(dotNumber10);
       expect(screen.getByText('Connected: 1/10')).toBeInTheDocument();
     }
     
@@ -128,7 +128,7 @@ describe('DotToDotGame', () => {
     
     // Should be back to initial state
     expect(screen.getByText('Connected: 0/10')).toBeInTheDocument();
-    expect(screen.getByText('1')).toBeInTheDocument();
+    expect(screen.getByText('10')).toBeInTheDocument();
   });
 
   test('advances to next picture when next button is clicked', () => {
@@ -268,25 +268,25 @@ describe('DotToDotGame', () => {
     expect(svg).toBeInTheDocument();
     
     if (svg) {
-      // Initially, dot 1 should have enhanced visibility
+      // Initially, dot 10 should have enhanced visibility
       let glowElements = svg.querySelectorAll('.dot-glow');
       let pulseRingElements = svg.querySelectorAll('.dot-pulse-ring');
       expect(glowElements.length).toBe(1);
       expect(pulseRingElements.length).toBe(1);
       
-      // Connect dot 1
-      const dots = screen.getAllByText('1');
-      const dotNumber1 = dots.find(element => 
+      // Connect dot 10
+      const dots = screen.getAllByText('10');
+      const dotNumber10 = dots.find(element => 
         element.tagName === 'text' || element.closest('g')
       );
       
-      if (dotNumber1) {
-        fireEvent.click(dotNumber1);
+      if (dotNumber10) {
+        fireEvent.click(dotNumber10);
         
-        // Now dot 2 should have enhanced visibility
+        // Now dot 9 should have enhanced visibility
         expect(screen.getByText('Connected: 1/10')).toBeInTheDocument();
         
-        // Check that visibility elements still exist (now for dot 2)
+        // Check that visibility elements still exist (now for dot 9)
         glowElements = svg.querySelectorAll('.dot-glow');
         pulseRingElements = svg.querySelectorAll('.dot-pulse-ring');
         expect(glowElements.length).toBe(1);
@@ -361,7 +361,7 @@ describe('DotToDotGame', () => {
     expect(svg).toBeInTheDocument();
     
     if (svg) {
-      // Find the current dot (should be dot 1)
+      // Find the current dot (should be dot 10)
       const circles = svg.querySelectorAll('circle');
       const textElements = svg.querySelectorAll('text');
       
@@ -399,16 +399,16 @@ describe('DotToDotGame', () => {
     
     const nextButton = screen.getByText('➡️ Next Picture');
     
-    // Test different levels have different dot counts
+    // Test different levels have different dot counts and start with highest number
     const levelTests = [
-      { name: '⭐ Happy Star', expectedDots: 10 },
-      { name: '🏠 Cute House', expectedDots: 10 },
-      { name: '🐠 Friendly Fish', expectedDots: 12 },
-      { name: '🏎️ Racing Car', expectedDots: 15 },
-      { name: '☀️ Smiling Sun', expectedDots: 14 },
-      { name: '🐱 Cute Cat', expectedDots: 17 },
-      { name: '🚀 Rocket Ship', expectedDots: 22 },
-      { name: '🦋 Happy Butterfly', expectedDots: 23 }
+      { name: '⭐ Happy Star', expectedDots: 10, startingDot: '10' },
+      { name: '🏠 Cute House', expectedDots: 10, startingDot: '10' },
+      { name: '🐠 Friendly Fish', expectedDots: 12, startingDot: '12' },
+      { name: '🏎️ Racing Car', expectedDots: 15, startingDot: '15' },
+      { name: '☀️ Smiling Sun', expectedDots: 14, startingDot: '14' },
+      { name: '🐱 Cute Cat', expectedDots: 17, startingDot: '17' },
+      { name: '🚀 Rocket Ship', expectedDots: 22, startingDot: '22' },
+      { name: '🦋 Happy Butterfly', expectedDots: 23, startingDot: '23' }
     ];
     
     levelTests.forEach((level, index) => {
@@ -418,6 +418,7 @@ describe('DotToDotGame', () => {
       
       expect(screen.getByText(level.name)).toBeInTheDocument();
       expect(screen.getByText(`Connected: 0/${level.expectedDots}`)).toBeInTheDocument();
+      expect(screen.getByText(level.startingDot)).toBeInTheDocument();
     });
   });
 
@@ -444,8 +445,8 @@ describe('DotToDotGame', () => {
   test('game completion works correctly', () => {
     render(<DotToDotGame onBack={mockOnBack} />);
     
-    // Connect all dots in order
-    for (let i = 1; i <= 10; i++) {
+    // Connect all dots in reverse order (10 down to 1)
+    for (let i = 10; i >= 1; i--) {
       const dots = screen.getAllByText(i.toString());
       const dotElement = dots.find(element => 
         element.tagName === 'text' || element.closest('g')
