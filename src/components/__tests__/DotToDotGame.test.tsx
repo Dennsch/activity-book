@@ -56,6 +56,30 @@ describe('DotToDotGame', () => {
     fireEvent.click(nextButton);
     expect(screen.getByText('🦋 Happy Butterfly')).toBeInTheDocument();
     
+    // Level 9: Sweet Heart
+    fireEvent.click(nextButton);
+    expect(screen.getByText('💖 Sweet Heart')).toBeInTheDocument();
+    
+    // Level 10: Juicy Apple
+    fireEvent.click(nextButton);
+    expect(screen.getByText('🍎 Juicy Apple')).toBeInTheDocument();
+    
+    // Level 11: Flying Airplane
+    fireEvent.click(nextButton);
+    expect(screen.getByText('✈️ Flying Airplane')).toBeInTheDocument();
+    
+    // Level 12: Colorful Umbrella
+    fireEvent.click(nextButton);
+    expect(screen.getByText('☂️ Colorful Umbrella')).toBeInTheDocument();
+    
+    // Level 13: Royal Crown
+    fireEvent.click(nextButton);
+    expect(screen.getByText('👑 Royal Crown')).toBeInTheDocument();
+    
+    // Level 14: Simple Flower
+    fireEvent.click(nextButton);
+    expect(screen.getByText('🌻 Simple Flower')).toBeInTheDocument();
+    
     // Should cycle back to first level
     fireEvent.click(nextButton);
     expect(screen.getByText('⭐ Happy Star')).toBeInTheDocument();
@@ -300,7 +324,7 @@ describe('DotToDotGame', () => {
     
     // Navigate to "Happy Butterfly" which has overlapping dots (22 and 23 at same position)
     const nextButton = screen.getByText('➡️ Next Picture');
-    // Click 7 times to get to Happy Butterfly (8th level)
+    // Click 7 times to get to Happy Butterfly (8th level, same as before)
     for (let i = 0; i < 7; i++) {
       fireEvent.click(nextButton);
     }
@@ -408,7 +432,13 @@ describe('DotToDotGame', () => {
       { name: '☀️ Smiling Sun', expectedDots: 14, startingDot: '14' },
       { name: '🐱 Cute Cat', expectedDots: 17, startingDot: '17' },
       { name: '🚀 Rocket Ship', expectedDots: 22, startingDot: '22' },
-      { name: '🦋 Happy Butterfly', expectedDots: 23, startingDot: '23' }
+      { name: '🦋 Happy Butterfly', expectedDots: 23, startingDot: '23' },
+      { name: '💖 Sweet Heart', expectedDots: 13, startingDot: '13' },
+      { name: '🍎 Juicy Apple', expectedDots: 15, startingDot: '15' },
+      { name: '✈️ Flying Airplane', expectedDots: 19, startingDot: '19' },
+      { name: '☂️ Colorful Umbrella', expectedDots: 15, startingDot: '15' },
+      { name: '👑 Royal Crown', expectedDots: 15, startingDot: '15' },
+      { name: '🌻 Simple Flower', expectedDots: 15, startingDot: '15' }
     ];
     
     levelTests.forEach((level, index) => {

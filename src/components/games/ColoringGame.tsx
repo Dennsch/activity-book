@@ -75,6 +75,69 @@ const ColoringGame: React.FC<ColoringGameProps> = ({ onBack }) => {
         { id: 'eye2', path: 'M155 60 Q155 50 165 50 Q175 50 175 60 Q175 70 165 70 Q155 70 155 60', originalColor: '#000000' },
         { id: 'mouth', path: 'M135 85 Q150 95 165 85', originalColor: '#000000' }
       ]
+    },
+    {
+      name: 'Beautiful Butterfly',
+      emoji: '🦋',
+      viewBox: '0 0 400 300',
+      areas: [
+        { id: 'body', path: 'M200 50 L200 250 L210 250 L210 50 Z', originalColor: '#E8E8E8' },
+        { id: 'left_upper_wing', path: 'M200 80 Q150 60 120 80 Q100 100 120 140 Q150 160 200 140 Z', originalColor: '#E8E8E8' },
+        { id: 'left_lower_wing', path: 'M200 140 Q150 160 130 180 Q120 200 140 220 Q170 230 200 210 Z', originalColor: '#E8E8E8' },
+        { id: 'right_upper_wing', path: 'M210 80 Q260 60 290 80 Q310 100 290 140 Q260 160 210 140 Z', originalColor: '#E8E8E8' },
+        { id: 'right_lower_wing', path: 'M210 140 Q260 160 280 180 Q290 200 270 220 Q240 230 210 210 Z', originalColor: '#E8E8E8' },
+        { id: 'antenna1', path: 'M195 50 Q190 40 185 35', originalColor: '#000000' },
+        { id: 'antenna2', path: 'M215 50 Q220 40 225 35', originalColor: '#000000' },
+        { id: 'wing_spots1', path: 'M160 100 Q160 90 170 90 Q180 90 180 100 Q180 110 170 110 Q160 110 160 100', originalColor: '#000000' },
+        { id: 'wing_spots2', path: 'M240 100 Q240 90 250 90 Q260 90 260 100 Q260 110 250 110 Q240 110 240 100', originalColor: '#000000' }
+      ]
+    },
+    {
+      name: 'Pretty Flower',
+      emoji: '🌸',
+      viewBox: '0 0 300 400',
+      areas: [
+        { id: 'stem', path: 'M150 200 L150 350 L160 350 L160 200 Z', originalColor: '#E8E8E8' },
+        { id: 'center', path: 'M150 120 Q150 100 170 100 Q190 100 190 120 Q190 140 170 140 Q150 140 150 120', originalColor: '#E8E8E8' },
+        { id: 'petal1', path: 'M170 100 Q190 80 210 100 Q190 120 170 100', originalColor: '#E8E8E8' },
+        { id: 'petal2', path: 'M190 120 Q210 140 190 160 Q170 140 190 120', originalColor: '#E8E8E8' },
+        { id: 'petal3', path: 'M170 140 Q150 160 130 140 Q150 120 170 140', originalColor: '#E8E8E8' },
+        { id: 'petal4', path: 'M150 120 Q130 100 150 80 Q170 100 150 120', originalColor: '#E8E8E8' },
+        { id: 'petal5', path: 'M190 100 Q200 70 220 90 Q200 110 190 100', originalColor: '#E8E8E8' },
+        { id: 'leaf1', path: 'M160 250 Q180 240 190 260 Q180 280 160 270 Q150 260 160 250', originalColor: '#E8E8E8' },
+        { id: 'leaf2', path: 'M150 280 Q130 270 120 290 Q130 310 150 300 Q160 290 150 280', originalColor: '#E8E8E8' }
+      ]
+    },
+    {
+      name: 'Sailing Boat',
+      emoji: '⛵',
+      viewBox: '0 0 400 350',
+      areas: [
+        { id: 'hull', path: 'M100 250 Q100 230 120 230 L280 230 Q300 230 300 250 L320 280 Q320 300 300 300 L100 300 Q80 300 80 280 Z', originalColor: '#E8E8E8' },
+        { id: 'mast', path: 'M200 80 L200 250 L210 250 L210 80 Z', originalColor: '#E8E8E8' },
+        { id: 'main_sail', path: 'M210 80 L210 200 L300 180 L280 100 Z', originalColor: '#E8E8E8' },
+        { id: 'front_sail', path: 'M200 80 L200 160 L130 140 L150 100 Z', originalColor: '#E8E8E8' },
+        { id: 'flag', path: 'M210 80 L210 100 L240 90 L230 80 Z', originalColor: '#E8E8E8' },
+        { id: 'water_line1', path: 'M50 320 Q100 310 150 320 Q200 330 250 320 Q300 310 350 320', originalColor: '#000000' },
+        { id: 'water_line2', path: 'M60 330 Q110 320 160 330 Q210 340 260 330 Q310 320 360 330', originalColor: '#000000' }
+      ]
+    },
+    {
+      name: 'Happy Elephant',
+      emoji: '🐘',
+      viewBox: '0 0 450 350',
+      areas: [
+        { id: 'body', path: 'M150 150 Q150 120 180 120 L320 120 Q350 120 350 150 L350 220 Q350 250 320 250 L180 250 Q150 250 150 220 Z', originalColor: '#E8E8E8' },
+        { id: 'head', path: 'M80 140 Q80 110 110 110 L180 110 Q210 110 210 140 L210 200 Q210 230 180 230 L110 230 Q80 230 80 200 Z', originalColor: '#E8E8E8' },
+        { id: 'trunk', path: 'M80 180 Q60 180 50 200 Q40 220 50 240 Q60 260 80 260 Q90 250 90 240 Q90 220 90 200 Q90 180 80 180', originalColor: '#E8E8E8' },
+        { id: 'ear', path: 'M110 110 Q90 90 70 110 Q60 130 80 150 Q100 160 120 140 Q130 120 110 110', originalColor: '#E8E8E8' },
+        { id: 'leg1', path: 'M170 250 L170 300 L190 300 L190 250', originalColor: '#E8E8E8' },
+        { id: 'leg2', path: 'M210 250 L210 300 L230 300 L230 250', originalColor: '#E8E8E8' },
+        { id: 'leg3', path: 'M280 250 L280 300 L300 300 L300 250', originalColor: '#E8E8E8' },
+        { id: 'leg4', path: 'M320 250 L320 300 L340 300 L340 250', originalColor: '#E8E8E8' },
+        { id: 'eye', path: 'M130 150 Q130 140 140 140 Q150 140 150 150 Q150 160 140 160 Q130 160 130 150', originalColor: '#000000' },
+        { id: 'tail', path: 'M350 180 Q370 180 380 190 Q380 200 370 210 Q360 210 350 200', originalColor: '#E8E8E8' }
+      ]
     }
   ];
 

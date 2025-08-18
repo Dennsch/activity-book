@@ -207,6 +207,140 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
         { id: 22, x: 250, y: 160, number: 22 },
         { id: 23, x: 250, y: 160, number: 23 }
       ]
+    },
+    {
+      name: 'Sweet Heart',
+      emoji: '💖',
+      viewBox: '0 0 400 350',
+      dots: [
+        { id: 1, x: 200, y: 100, number: 1 },
+        { id: 2, x: 170, y: 80, number: 2 },
+        { id: 3, x: 140, y: 90, number: 3 },
+        { id: 4, x: 120, y: 120, number: 4 },
+        { id: 5, x: 130, y: 150, number: 5 },
+        { id: 6, x: 160, y: 180, number: 6 },
+        { id: 7, x: 200, y: 220, number: 7 },
+        { id: 8, x: 240, y: 180, number: 8 },
+        { id: 9, x: 270, y: 150, number: 9 },
+        { id: 10, x: 280, y: 120, number: 10 },
+        { id: 11, x: 260, y: 90, number: 11 },
+        { id: 12, x: 230, y: 80, number: 12 },
+        { id: 13, x: 200, y: 100, number: 13 }
+      ]
+    },
+    {
+      name: 'Juicy Apple',
+      emoji: '🍎',
+      viewBox: '0 0 350 400',
+      dots: [
+        { id: 1, x: 175, y: 120, number: 1 },
+        { id: 2, x: 140, y: 140, number: 2 },
+        { id: 3, x: 120, y: 180, number: 3 },
+        { id: 4, x: 110, y: 220, number: 4 },
+        { id: 5, x: 120, y: 260, number: 5 },
+        { id: 6, x: 140, y: 290, number: 6 },
+        { id: 7, x: 175, y: 310, number: 7 },
+        { id: 8, x: 210, y: 290, number: 8 },
+        { id: 9, x: 230, y: 260, number: 9 },
+        { id: 10, x: 240, y: 220, number: 10 },
+        { id: 11, x: 230, y: 180, number: 11 },
+        { id: 12, x: 210, y: 140, number: 12 },
+        { id: 13, x: 175, y: 120, number: 13 },
+        { id: 14, x: 185, y: 100, number: 14 },
+        { id: 15, x: 195, y: 80, number: 15 }
+      ]
+    },
+    {
+      name: 'Flying Airplane',
+      emoji: '✈️',
+      viewBox: '0 0 500 300',
+      dots: [
+        { id: 1, x: 100, y: 150, number: 1 },
+        { id: 2, x: 150, y: 140, number: 2 },
+        { id: 3, x: 200, y: 130, number: 3 },
+        { id: 4, x: 250, y: 120, number: 4 },
+        { id: 5, x: 300, y: 110, number: 5 },
+        { id: 6, x: 350, y: 120, number: 6 },
+        { id: 7, x: 380, y: 140, number: 7 },
+        { id: 8, x: 370, y: 160, number: 8 },
+        { id: 9, x: 340, y: 170, number: 9 },
+        { id: 10, x: 290, y: 180, number: 10 },
+        { id: 11, x: 240, y: 190, number: 11 },
+        { id: 12, x: 190, y: 200, number: 12 },
+        { id: 13, x: 140, y: 190, number: 13 },
+        { id: 14, x: 100, y: 180, number: 14 },
+        { id: 15, x: 80, y: 160, number: 15 },
+        { id: 16, x: 100, y: 150, number: 16 },
+        { id: 17, x: 120, y: 120, number: 17 },
+        { id: 18, x: 160, y: 110, number: 18 },
+        { id: 19, x: 200, y: 120, number: 19 }
+      ]
+    },
+    {
+      name: 'Colorful Umbrella',
+      emoji: '☂️',
+      viewBox: '0 0 400 350',
+      dots: [
+        { id: 1, x: 200, y: 80, number: 1 },
+        { id: 2, x: 150, y: 100, number: 2 },
+        { id: 3, x: 120, y: 130, number: 3 },
+        { id: 4, x: 110, y: 160, number: 4 },
+        { id: 5, x: 130, y: 180, number: 5 },
+        { id: 6, x: 170, y: 190, number: 6 },
+        { id: 7, x: 200, y: 195, number: 7 },
+        { id: 8, x: 230, y: 190, number: 8 },
+        { id: 9, x: 270, y: 180, number: 9 },
+        { id: 10, x: 290, y: 160, number: 10 },
+        { id: 11, x: 280, y: 130, number: 11 },
+        { id: 12, x: 250, y: 100, number: 12 },
+        { id: 13, x: 200, y: 80, number: 13 },
+        { id: 14, x: 200, y: 195, number: 14 },
+        { id: 15, x: 200, y: 280, number: 15 }
+      ]
+    },
+    {
+      name: 'Royal Crown',
+      emoji: '👑',
+      viewBox: '0 0 400 300',
+      dots: [
+        { id: 1, x: 100, y: 200, number: 1 },
+        { id: 2, x: 120, y: 160, number: 2 },
+        { id: 3, x: 150, y: 140, number: 3 },
+        { id: 4, x: 180, y: 120, number: 4 },
+        { id: 5, x: 200, y: 100, number: 5 },
+        { id: 6, x: 220, y: 120, number: 6 },
+        { id: 7, x: 250, y: 140, number: 7 },
+        { id: 8, x: 280, y: 160, number: 8 },
+        { id: 9, x: 300, y: 200, number: 9 },
+        { id: 10, x: 280, y: 220, number: 10 },
+        { id: 11, x: 250, y: 230, number: 11 },
+        { id: 12, x: 200, y: 240, number: 12 },
+        { id: 13, x: 150, y: 230, number: 13 },
+        { id: 14, x: 120, y: 220, number: 14 },
+        { id: 15, x: 100, y: 200, number: 15 }
+      ]
+    },
+    {
+      name: 'Simple Flower',
+      emoji: '🌻',
+      viewBox: '0 0 350 400',
+      dots: [
+        { id: 1, x: 175, y: 120, number: 1 },
+        { id: 2, x: 200, y: 100, number: 2 },
+        { id: 3, x: 220, y: 120, number: 3 },
+        { id: 4, x: 200, y: 140, number: 4 },
+        { id: 5, x: 220, y: 160, number: 5 },
+        { id: 6, x: 200, y: 180, number: 6 },
+        { id: 7, x: 175, y: 160, number: 7 },
+        { id: 8, x: 150, y: 180, number: 8 },
+        { id: 9, x: 130, y: 160, number: 9 },
+        { id: 10, x: 150, y: 140, number: 10 },
+        { id: 11, x: 130, y: 120, number: 11 },
+        { id: 12, x: 150, y: 100, number: 12 },
+        { id: 13, x: 175, y: 120, number: 13 },
+        { id: 14, x: 175, y: 180, number: 14 },
+        { id: 15, x: 175, y: 280, number: 15 }
+      ]
     }
   ];
 
