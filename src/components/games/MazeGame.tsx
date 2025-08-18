@@ -224,7 +224,14 @@ const MazeGame: React.FC<MazeGameProps> = ({ onBack }) => {
         [0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
         [1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      ],
+      start: { x: 0, y: 0 },
+      end: { x: 9, y: 9 }
+    }
+  ];
 
+  const generateMaze = (): Maze => {
     const pattern = mazePatterns[Math.min(level - 1, mazePatterns.length - 1)];
     
     // Calculate cell size based on screen size and maze dimensions
