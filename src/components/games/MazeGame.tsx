@@ -17,6 +17,12 @@ interface Maze {
   cellSize: number;
 }
 
+interface MazePattern {
+  grid: number[][];
+  start: Point;
+  end: Point;
+}
+
 const MazeGame: React.FC<MazeGameProps> = ({ onBack }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [currentMaze, setCurrentMaze] = useState<Maze | null>(null);
@@ -27,8 +33,56 @@ const MazeGame: React.FC<MazeGameProps> = ({ onBack }) => {
   const [level, setLevel] = useState(1);
   const [collisionFeedback, setCollisionFeedback] = useState(false);
 
+  // Pathfinding algorithm to verify maze solvability
+  const isMazeSolvable = (pattern: MazePattern): boolean => {
+    const { grid, start, end } = pattern;
+    const rows = grid.length;
+    const cols = grid[0].length;
+    
+    // BFS to find path from start to end
+    const queue: Point[] = [start];
+    const visited = new Set<string>();
+    visited.add(`${start.x},${start.y}`);
+    
+    const directions = [
+      { x: 0, y: 1 },   // down
+      { x: 0, y: -1 },  // up
+      { x: 1, y: 0 },   // right
+      { x: -1, y: 0 }   // left
+    ];
+    
+    while (queue.length > 0) {
+      const current = queue.shift()!;
+      
+      // Check if we reached the end
+      if (current.x === end.x && current.y === end.y) {
+        return true;
+      }
+      
+      // Explore neighbors
+      for (const dir of directions) {
+        const newX = current.x + dir.x;
+        const newY = current.y + dir.y;
+        const key = `${newX},${newY}`;
+        
+        // Check bounds and if cell is walkable (0) and not visited
+        if (
+          newX >= 0 && newX < cols &&
+          newY >= 0 && newY < rows &&
+          grid[newY][newX] === 0 &&
+          !visited.has(key)
+        ) {
+          visited.add(key);
+          queue.push({ x: newX, y: newY });
+        }
+      }
+    }
+    
+    return false; // No path found
+  };
+
   // Expanded maze patterns for progressive difficulty
-  const mazePatterns = [
+  const mazePatterns: MazePattern[] = [
     // Level 1 - Very simple
     {
       grid: [
@@ -170,7 +224,7 @@ const MazeGame: React.FC<MazeGameProps> = ({ onBack }) => {
         [0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
         [1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [0, 1, 1, 1, 1, 1, 1, 1, 0, 0]
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
       ],
       start: { x: 0, y: 0 },
       end: { x: 9, y: 9 }
