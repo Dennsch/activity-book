@@ -23,7 +23,7 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
   const svgRef = useRef<SVGSVGElement>(null);
   const [currentPicture, setCurrentPicture] = useState(0);
   const [connectedDots, setConnectedDots] = useState<number[]>([]);
-  const [nextDotToConnect, setNextDotToConnect] = useState(10); // Will be updated in useEffect
+  const [nextDotToConnect, setNextDotToConnect] = useState(1); // Will be updated in useEffect
   const [isComplete, setIsComplete] = useState(false);
   const [completedPictures, setCompletedPictures] = useState(0);
 
@@ -353,26 +353,22 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
 
   useEffect(() => {
     setConnectedDots([]);
-    setNextDotToConnect(getMaxDotNumber());
+    setNextDotToConnect(1);
     setIsComplete(false);
   }, [currentPicture]);
 
-  // Initialize the game state on first mount
-  useEffect(() => {
-    setNextDotToConnect(getMaxDotNumber());
-  }, []);
 
   const handleDotClick = (dotNumber: number) => {
     if (dotNumber === nextDotToConnect) {
       const newConnectedDots = [...connectedDots, dotNumber];
       setConnectedDots(newConnectedDots);
 
-      if (dotNumber === 1) {
+      if (dotNumber === getMaxDotNumber()) {
         // Game is complete when we connect dot 1 (the last dot in reverse order)
         setIsComplete(true);
         setCompletedPictures((prev) => prev + 1);
       } else {
-        setNextDotToConnect(nextDotToConnect - 1);
+        setNextDotToConnect(nextDotToConnect + 1);
       }
     }
   };
@@ -435,13 +431,6 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
     // Sort dots so that for dots with the same position, smaller numbers come last
     // This ensures smaller numbered dots render on top when overlapping
     sortedDots.sort((a, b) => {
-      // If dots are in the same position
-      if (a.x === b.x && a.y === b.y) {
-        // Sort by number in descending order (larger numbers first)
-        // This way smaller numbers will be rendered last and appear on top
-        return b.number - a.number;
-      }
-      // For dots in different positions, maintain original order based on id
       return a.id - b.id;
     });
 
