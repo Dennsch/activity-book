@@ -49,6 +49,13 @@ const MainMenu: React.FC<MainMenuProps> = ({ onGameSelect }) => {
       description: 'Crack the secret code words!',
       theme: 'digger-theme',
       emoji: '🔤'
+    },
+    {
+      id: 'spot-difference' as GameType,
+      title: '🔍 Spot the Difference',
+      description: 'Find 5 differences between pictures!',
+      theme: 'detective-theme',
+      emoji: '🔍'
     }
   ];
 
