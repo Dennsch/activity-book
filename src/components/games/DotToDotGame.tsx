@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
-import './DotToDotGame.css';
+import React, { useState, useRef, useEffect } from "react";
+import "./DotToDotGame.css";
 
 interface DotToDotGameProps {
   onBack: () => void;
@@ -29,9 +29,9 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
 
   const pictures: DotToDotPicture[] = [
     {
-      name: 'Happy Star',
-      emoji: '⭐',
-      viewBox: '0 0 400 400',
+      name: "Happy Star",
+      emoji: "⭐",
+      viewBox: "0 0 400 400",
       dots: [
         { id: 1, x: 200, y: 50, number: 1 },
         { id: 2, x: 220, y: 120, number: 2 },
@@ -42,13 +42,13 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
         { id: 7, x: 140, y: 240, number: 7 },
         { id: 8, x: 160, y: 170, number: 8 },
         { id: 9, x: 110, y: 120, number: 9 },
-        { id: 10, x: 180, y: 120, number: 10 }
-      ]
+        { id: 10, x: 180, y: 120, number: 10 },
+      ],
     },
     {
-      name: 'Cute House',
-      emoji: '🏠',
-      viewBox: '0 0 400 400',
+      name: "Cute House",
+      emoji: "🏠",
+      viewBox: "0 0 400 400",
       dots: [
         { id: 1, x: 200, y: 80, number: 1 },
         { id: 2, x: 120, y: 160, number: 2 },
@@ -59,13 +59,13 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
         { id: 7, x: 160, y: 200, number: 7 },
         { id: 8, x: 160, y: 260, number: 8 },
         { id: 9, x: 200, y: 260, number: 9 },
-        { id: 10, x: 200, y: 200, number: 10 }
-      ]
+        { id: 10, x: 200, y: 200, number: 10 },
+      ],
     },
     {
-      name: 'Friendly Fish',
-      emoji: '🐠',
-      viewBox: '0 0 400 300',
+      name: "Friendly Fish",
+      emoji: "🐠",
+      viewBox: "0 0 400 300",
       dots: [
         { id: 1, x: 80, y: 150, number: 1 },
         { id: 2, x: 120, y: 120, number: 2 },
@@ -78,13 +78,13 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
         { id: 9, x: 80, y: 150, number: 9 },
         { id: 10, x: 50, y: 130, number: 10 },
         { id: 11, x: 30, y: 150, number: 11 },
-        { id: 12, x: 50, y: 170, number: 12 }
-      ]
+        { id: 12, x: 50, y: 170, number: 12 },
+      ],
     },
     {
-      name: 'Racing Car',
-      emoji: '🏎️',
-      viewBox: '0 0 450 300',
+      name: "Racing Car",
+      emoji: "🏎️",
+      viewBox: "0 0 450 300",
       dots: [
         { id: 1, x: 100, y: 180, number: 1 },
         { id: 2, x: 120, y: 160, number: 2 },
@@ -100,13 +100,13 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
         { id: 12, x: 100, y: 220, number: 12 },
         { id: 13, x: 100, y: 180, number: 13 },
         { id: 14, x: 130, y: 200, number: 14 },
-        { id: 15, x: 310, y: 200, number: 15 }
-      ]
+        { id: 15, x: 310, y: 200, number: 15 },
+      ],
     },
     {
-      name: 'Smiling Sun',
-      emoji: '☀️',
-      viewBox: '0 0 400 400',
+      name: "Smiling Sun",
+      emoji: "☀️",
+      viewBox: "0 0 400 400",
       dots: [
         { id: 1, x: 200, y: 80, number: 1 },
         { id: 2, x: 280, y: 120, number: 2 },
@@ -121,13 +121,13 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
         { id: 11, x: 230, y: 170, number: 11 },
         { id: 12, x: 170, y: 230, number: 12 },
         { id: 13, x: 200, y: 250, number: 13 },
-        { id: 14, x: 230, y: 230, number: 14 }
-      ]
+        { id: 14, x: 230, y: 230, number: 14 },
+      ],
     },
     {
-      name: 'Cute Cat',
-      emoji: '🐱',
-      viewBox: '0 0 400 400',
+      name: "Cute Cat",
+      emoji: "🐱",
+      viewBox: "0 0 400 400",
       dots: [
         { id: 1, x: 150, y: 100, number: 1 },
         { id: 2, x: 120, y: 80, number: 2 },
@@ -145,13 +145,13 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
         { id: 14, x: 120, y: 140, number: 14 },
         { id: 15, x: 150, y: 100, number: 15 },
         { id: 16, x: 170, y: 120, number: 16 },
-        { id: 17, x: 230, y: 120, number: 17 }
-      ]
+        { id: 17, x: 230, y: 120, number: 17 },
+      ],
     },
     {
-      name: 'Rocket Ship',
-      emoji: '🚀',
-      viewBox: '0 0 400 500',
+      name: "Rocket Ship",
+      emoji: "🚀",
+      viewBox: "0 0 400 500",
       dots: [
         { id: 1, x: 200, y: 50, number: 1 },
         { id: 2, x: 220, y: 80, number: 2 },
@@ -174,13 +174,13 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
         { id: 19, x: 150, y: 180, number: 19 },
         { id: 20, x: 160, y: 120, number: 20 },
         { id: 21, x: 180, y: 80, number: 21 },
-        { id: 22, x: 200, y: 50, number: 22 }
-      ]
+        { id: 22, x: 200, y: 50, number: 22 },
+      ],
     },
     {
-      name: 'Happy Butterfly',
-      emoji: '🦋',
-      viewBox: '0 0 500 400',
+      name: "Happy Butterfly",
+      emoji: "🦋",
+      viewBox: "0 0 500 400",
       dots: [
         { id: 1, x: 250, y: 100, number: 1 },
         { id: 2, x: 230, y: 120, number: 2 },
@@ -205,13 +205,13 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
         { id: 21, x: 250, y: 100, number: 21 },
         // Overlapping dots to test visibility
         { id: 22, x: 250, y: 160, number: 22 },
-        { id: 23, x: 250, y: 160, number: 23 }
-      ]
+        { id: 23, x: 250, y: 160, number: 23 },
+      ],
     },
     {
-      name: 'Sweet Heart',
-      emoji: '💖',
-      viewBox: '0 0 400 350',
+      name: "Sweet Heart",
+      emoji: "💖",
+      viewBox: "0 0 400 350",
       dots: [
         { id: 1, x: 200, y: 100, number: 1 },
         { id: 2, x: 170, y: 80, number: 2 },
@@ -225,13 +225,13 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
         { id: 10, x: 280, y: 120, number: 10 },
         { id: 11, x: 260, y: 90, number: 11 },
         { id: 12, x: 230, y: 80, number: 12 },
-        { id: 13, x: 200, y: 100, number: 13 }
-      ]
+        { id: 13, x: 200, y: 100, number: 13 },
+      ],
     },
     {
-      name: 'Juicy Apple',
-      emoji: '🍎',
-      viewBox: '0 0 350 400',
+      name: "Juicy Apple",
+      emoji: "🍎",
+      viewBox: "0 0 350 400",
       dots: [
         { id: 1, x: 175, y: 120, number: 1 },
         { id: 2, x: 140, y: 140, number: 2 },
@@ -247,13 +247,13 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
         { id: 12, x: 210, y: 140, number: 12 },
         { id: 13, x: 175, y: 120, number: 13 },
         { id: 14, x: 185, y: 100, number: 14 },
-        { id: 15, x: 195, y: 80, number: 15 }
-      ]
+        { id: 15, x: 195, y: 80, number: 15 },
+      ],
     },
     {
-      name: 'Flying Airplane',
-      emoji: '✈️',
-      viewBox: '0 0 500 300',
+      name: "Flying Airplane",
+      emoji: "✈️",
+      viewBox: "0 0 500 300",
       dots: [
         { id: 1, x: 100, y: 150, number: 1 },
         { id: 2, x: 150, y: 140, number: 2 },
@@ -273,13 +273,13 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
         { id: 16, x: 100, y: 150, number: 16 },
         { id: 17, x: 120, y: 120, number: 17 },
         { id: 18, x: 160, y: 110, number: 18 },
-        { id: 19, x: 200, y: 120, number: 19 }
-      ]
+        { id: 19, x: 200, y: 120, number: 19 },
+      ],
     },
     {
-      name: 'Colorful Umbrella',
-      emoji: '☂️',
-      viewBox: '0 0 400 350',
+      name: "Colorful Umbrella",
+      emoji: "☂️",
+      viewBox: "0 0 400 350",
       dots: [
         { id: 1, x: 200, y: 80, number: 1 },
         { id: 2, x: 150, y: 100, number: 2 },
@@ -295,13 +295,13 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
         { id: 12, x: 250, y: 100, number: 12 },
         { id: 13, x: 200, y: 80, number: 13 },
         { id: 14, x: 200, y: 195, number: 14 },
-        { id: 15, x: 200, y: 280, number: 15 }
-      ]
+        { id: 15, x: 200, y: 280, number: 15 },
+      ],
     },
     {
-      name: 'Royal Crown',
-      emoji: '👑',
-      viewBox: '0 0 400 300',
+      name: "Royal Crown",
+      emoji: "👑",
+      viewBox: "0 0 400 300",
       dots: [
         { id: 1, x: 100, y: 200, number: 1 },
         { id: 2, x: 120, y: 160, number: 2 },
@@ -317,13 +317,13 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
         { id: 12, x: 200, y: 240, number: 12 },
         { id: 13, x: 150, y: 230, number: 13 },
         { id: 14, x: 120, y: 220, number: 14 },
-        { id: 15, x: 100, y: 200, number: 15 }
-      ]
+        { id: 15, x: 100, y: 200, number: 15 },
+      ],
     },
     {
-      name: 'Simple Flower',
-      emoji: '🌻',
-      viewBox: '0 0 350 400',
+      name: "Simple Flower",
+      emoji: "🌻",
+      viewBox: "0 0 350 400",
       dots: [
         { id: 1, x: 175, y: 120, number: 1 },
         { id: 2, x: 200, y: 100, number: 2 },
@@ -339,16 +339,16 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
         { id: 12, x: 150, y: 100, number: 12 },
         { id: 13, x: 175, y: 120, number: 13 },
         { id: 14, x: 175, y: 180, number: 14 },
-        { id: 15, x: 175, y: 280, number: 15 }
-      ]
-    }
+        { id: 15, x: 175, y: 280, number: 15 },
+      ],
+    },
   ];
 
   const currentPic = pictures[currentPicture];
 
   // Helper function to get the maximum dot number for the current picture
   const getMaxDotNumber = (): number => {
-    return Math.max(...currentPic.dots.map(dot => dot.number));
+    return Math.max(...currentPic.dots.map((dot) => dot.number));
   };
 
   useEffect(() => {
@@ -366,11 +366,11 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
     if (dotNumber === nextDotToConnect) {
       const newConnectedDots = [...connectedDots, dotNumber];
       setConnectedDots(newConnectedDots);
-      
+
       if (dotNumber === 1) {
         // Game is complete when we connect dot 1 (the last dot in reverse order)
         setIsComplete(true);
-        setCompletedPictures(prev => prev + 1);
+        setCompletedPictures((prev) => prev + 1);
       } else {
         setNextDotToConnect(nextDotToConnect - 1);
       }
@@ -378,13 +378,13 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
   };
 
   const getDotById = (number: number): Dot | undefined => {
-    return currentPic.dots.find(dot => dot.number === number);
+    return currentPic.dots.find((dot) => dot.number === number);
   };
 
   const getPathData = (): string => {
-    if (connectedDots.length < 2) return '';
-    
-    let pathData = '';
+    if (connectedDots.length < 2) return "";
+
+    let pathData = "";
     for (let i = 0; i < connectedDots.length; i++) {
       const dot = getDotById(connectedDots[i]);
       if (dot) {
@@ -395,7 +395,7 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
         }
       }
     }
-    
+
     // Close the path if complete
     if (isComplete && connectedDots.length > 2) {
       const firstDot = getDotById(connectedDots[0]);
@@ -403,7 +403,7 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
         pathData += ` L ${firstDot.x} ${firstDot.y}`;
       }
     }
-    
+
     return pathData;
   };
 
@@ -419,11 +419,11 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
 
   const getDotClass = (dotNumber: number): string => {
     if (connectedDots.includes(dotNumber)) {
-      return 'dot connected';
+      return "dot connected";
     } else if (dotNumber === nextDotToConnect) {
-      return 'dot next current-target';
+      return "dot next current-target";
     } else {
-      return 'dot';
+      return "dot";
     }
   };
 
@@ -431,7 +431,7 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
   // the smaller numbered dot appears on top (rendered last)
   const getSortedDotsForRendering = (): Dot[] => {
     const sortedDots = [...currentPic.dots];
-    
+
     // Sort dots so that for dots with the same position, smaller numbers come last
     // This ensures smaller numbered dots render on top when overlapping
     sortedDots.sort((a, b) => {
@@ -444,17 +444,19 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
       // For dots in different positions, maintain original order based on id
       return a.id - b.id;
     });
-    
+
     return sortedDots;
   };
 
   return (
     <div className="dot-to-dot-game car-theme">
-      <button className="back-button" onClick={onBack}>←</button>
-      
+      <button className="back-button" onClick={onBack}>
+        ←
+      </button>
+
       <div className="game-container">
         <h1 className="game-title">🔗 Connect the Dots! 🔗</h1>
-        
+
         <div className="score-board">
           <div className="progress">
             Connected: {connectedDots.length}/{currentPic.dots.length}
@@ -471,7 +473,8 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
             </h2>
             {!isComplete && (
               <p className="instruction">
-                Click on dot number <span className="next-number">{nextDotToConnect}</span>!
+                Click on dot number{" "}
+                <span className="next-number">{nextDotToConnect}</span>!
               </p>
             )}
           </div>
@@ -494,7 +497,7 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
                   className="connection-path"
                 />
               )}
-              
+
               {/* Draw the dots */}
               {getSortedDotsForRendering().map((dot) => (
                 <g key={dot.id}>
@@ -536,7 +539,9 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
                     y={dot.y}
                     textAnchor="middle"
                     dominantBaseline="central"
-                    className={`dot-number ${dot.number === nextDotToConnect ? 'current-number' : ''}`}
+                    className={`dot-number ${
+                      dot.number === nextDotToConnect ? "current-number" : ""
+                    }`}
                     onClick={() => handleDotClick(dot.number)}
                   >
                     {dot.number}
@@ -547,10 +552,16 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
           </div>
 
           <div className="dot-to-dot-controls">
-            <button className="control-button reset-button" onClick={resetPicture}>
+            <button
+              className="control-button reset-button"
+              onClick={resetPicture}
+            >
               🔄 Start Over
             </button>
-            <button className="control-button next-button" onClick={nextPicture}>
+            <button
+              className="control-button next-button"
+              onClick={nextPicture}
+            >
               ➡️ Next Picture
             </button>
           </div>
@@ -569,11 +580,15 @@ const DotToDotGame: React.FC<DotToDotGameProps> = ({ onBack }) => {
         <div className="game-tips">
           <div className="tip">
             <span className="tip-icon">🔢</span>
-            <span className="tip-text">Connect the dots in reverse order - start high, go low!</span>
+            <span className="tip-text">
+              Connect the dots in reverse order - start high, go low!
+            </span>
           </div>
           <div className="tip">
             <span className="tip-icon">✨</span>
-            <span className="tip-text">Watch the picture appear as you connect!</span>
+            <span className="tip-text">
+              Watch the picture appear as you connect!
+            </span>
           </div>
         </div>
       </div>

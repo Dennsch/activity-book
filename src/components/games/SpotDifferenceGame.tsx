@@ -17,8 +17,8 @@ interface Difference {
 interface GameScene {
   id: number;
   title: string;
-  leftScene: React.ReactNode;
-  rightScene: React.ReactNode;
+  leftImage: string;
+  rightImage: string;
   differences: Difference[];
 }
 
@@ -32,110 +32,41 @@ const SpotDifferenceGame: React.FC<SpotDifferenceGameProps> = ({ onBack }) => {
   const scenes: GameScene[] = [
     {
       id: 1,
-      title: "🏠 Happy House Scene",
-      leftScene: (
-        <div className="scene house-scene">
-          <div className="sky">
-            <div className="sun">☀️</div>
-            <div className="cloud cloud-1">☁️</div>
-            <div className="cloud cloud-2">☁️</div>
-          </div>
-          <div className="house">
-            <div className="roof">🔺</div>
-            <div className="house-body">
-              <div className="door">🚪</div>
-              <div className="window window-1">🪟</div>
-              <div className="window window-2">🪟</div>
-            </div>
-          </div>
-          <div className="ground">
-            <div className="tree">🌳</div>
-            <div className="flower flower-1">🌸</div>
-            <div className="flower flower-2">🌺</div>
-            <div className="cat">🐱</div>
-          </div>
-        </div>
-      ),
-      rightScene: (
-        <div className="scene house-scene">
-          <div className="sky">
-            <div className="sun">☀️</div>
-            <div className="cloud cloud-1">☁️</div>
-            <div className="cloud cloud-2 missing">☁️</div>
-          </div>
-          <div className="house">
-            <div className="roof different-roof">🔺</div>
-            <div className="house-body">
-              <div className="door">🚪</div>
-              <div className="window window-1">🪟</div>
-              <div className="window window-2">🪟</div>
-            </div>
-          </div>
-          <div className="ground">
-            <div className="tree">🌳</div>
-            <div className="flower flower-1 different-flower">🌸</div>
-            <div className="flower flower-2">🌺</div>
-            <div className="cat different-cat">🐱</div>
-          </div>
-        </div>
-      ),
+      title: "🔍 Find the Differences - Scene 1",
+      leftImage: require('./pics/11thmarch2019-1.png'),
+      rightImage: require('./pics/11thmarch2019-1.png'), // Using same image for now - you'll need the modified version
       differences: [
-        { id: 1, x: 70, y: 15, width: 15, height: 15, description: "Missing cloud" },
-        { id: 2, x: 45, y: 35, width: 20, height: 15, description: "Different roof color" },
-        { id: 3, x: 15, y: 75, width: 10, height: 10, description: "Different flower" },
-        { id: 4, x: 75, y: 80, width: 10, height: 10, description: "Cat color changed" },
-        { id: 5, x: 25, y: 65, width: 8, height: 8, description: "Extra leaf on tree" }
+        { id: 1, x: 20, y: 30, width: 8, height: 8, description: "Difference 1" },
+        { id: 2, x: 45, y: 25, width: 10, height: 10, description: "Difference 2" },
+        { id: 3, x: 70, y: 40, width: 8, height: 8, description: "Difference 3" },
+        { id: 4, x: 30, y: 60, width: 12, height: 8, description: "Difference 4" },
+        { id: 5, x: 60, y: 70, width: 8, height: 8, description: "Difference 5" }
       ]
     },
     {
       id: 2,
-      title: "🌊 Beach Fun Scene",
-      leftScene: (
-        <div className="scene beach-scene">
-          <div className="sky-beach">
-            <div className="sun-beach">☀️</div>
-            <div className="bird bird-1">🐦</div>
-            <div className="bird bird-2">🐦</div>
-          </div>
-          <div className="ocean">
-            <div className="wave">🌊</div>
-            <div className="boat">⛵</div>
-          </div>
-          <div className="beach">
-            <div className="palm-tree">🌴</div>
-            <div className="crab">🦀</div>
-            <div className="shell shell-1">🐚</div>
-            <div className="shell shell-2">🐚</div>
-            <div className="beach-ball">🏐</div>
-          </div>
-        </div>
-      ),
-      rightScene: (
-        <div className="scene beach-scene">
-          <div className="sky-beach">
-            <div className="sun-beach different-sun">☀️</div>
-            <div className="bird bird-1">🐦</div>
-            <div className="bird bird-2 missing">🐦</div>
-          </div>
-          <div className="ocean">
-            <div className="wave">🌊</div>
-            <div className="boat different-boat">⛵</div>
-          </div>
-          <div className="beach">
-            <div className="palm-tree">🌴</div>
-            <div className="crab different-crab">🦀</div>
-            <div className="shell shell-1">🐚</div>
-            <div className="shell shell-2 missing">🐚</div>
-            <div className="beach-ball">🏐</div>
-          </div>
-        </div>
-      ),
+      title: "🔍 Find the Differences - Scene 2",
+      leftImage: require('./pics/29thmarch2019.png'),
+      rightImage: require('./pics/29thmarch2019.png'), // Using same image for now - you'll need the modified version
       differences: [
-        { id: 1, x: 20, y: 20, width: 12, height: 12, description: "Sun size changed" },
-        { id: 2, x: 75, y: 25, width: 8, height: 8, description: "Missing bird" },
-        { id: 3, x: 60, y: 45, width: 15, height: 10, description: "Boat color changed" },
-        { id: 4, x: 25, y: 75, width: 10, height: 8, description: "Crab color changed" },
-        { id: 5, x: 70, y: 80, width: 8, height: 8, description: "Missing shell" }
+        { id: 1, x: 25, y: 20, width: 10, height: 10, description: "Difference 1" },
+        { id: 2, x: 50, y: 35, width: 8, height: 8, description: "Difference 2" },
+        { id: 3, x: 75, y: 25, width: 8, height: 8, description: "Difference 3" },
+        { id: 4, x: 35, y: 65, width: 10, height: 8, description: "Difference 4" },
+        { id: 5, x: 65, y: 75, width: 8, height: 8, description: "Difference 5" }
+      ]
+    },
+    {
+      id: 3,
+      title: "🔍 Find the Differences - Scene 3",
+      leftImage: require('./pics/8thapril20191.png'),
+      rightImage: require('./pics/8thapril20191.png'), // Using same image for now - you'll need the modified version
+      differences: [
+        { id: 1, x: 15, y: 25, width: 8, height: 8, description: "Difference 1" },
+        { id: 2, x: 40, y: 30, width: 10, height: 10, description: "Difference 2" },
+        { id: 3, x: 65, y: 20, width: 8, height: 8, description: "Difference 3" },
+        { id: 4, x: 25, y: 70, width: 12, height: 8, description: "Difference 4" },
+        { id: 5, x: 70, y: 65, width: 8, height: 8, description: "Difference 5" }
       ]
     }
   ];
@@ -256,7 +187,12 @@ const SpotDifferenceGame: React.FC<SpotDifferenceGameProps> = ({ onBack }) => {
               className="scene-container left-scene"
               onClick={(e) => handleSceneClick(e, false)}
             >
-              {currentGameScene.leftScene}
+              <img 
+                src={currentGameScene.leftImage} 
+                alt="Original scene" 
+                className="scene-image"
+                draggable={false}
+              />
             </div>
           </div>
           
@@ -271,7 +207,12 @@ const SpotDifferenceGame: React.FC<SpotDifferenceGameProps> = ({ onBack }) => {
               className="scene-container right-scene"
               onClick={(e) => handleSceneClick(e, true)}
             >
-              {currentGameScene.rightScene}
+              <img 
+                src={currentGameScene.rightImage} 
+                alt="Scene with differences" 
+                className="scene-image"
+                draggable={false}
+              />
               {renderDifferenceMarkers(true)}
               {renderWrongClickMarker()}
             </div>
