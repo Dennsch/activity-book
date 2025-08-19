@@ -77,6 +77,10 @@
   background: linear-gradient(135deg, #ffb74d 0%, #fff176 100%);
 }
 
+.game-card.detective-theme::before {
+  background: linear-gradient(135deg, #9c27b0 0%, #e1bee7 100%);
+}
+
 .game-card:hover {
   transform: translateY(-10px) scale(1.05);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);

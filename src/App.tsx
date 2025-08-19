@@ -7,8 +7,9 @@ import MazeGame from './components/games/MazeGame';
 import ColoringGame from './components/games/ColoringGame';
 import DotToDotGame from './components/games/DotToDotGame';
 import CodewordGame from './components/games/CodewordGame';
+import SpotDifferenceGame from './components/games/SpotDifferenceGame';
 
-export type GameType = 'menu' | 'math' | 'letters' | 'maze' | 'coloring' | 'dot-to-dot' | 'codeword';
+export type GameType = 'menu' | 'math' | 'letters' | 'maze' | 'coloring' | 'dot-to-dot' | 'codeword' | 'spot-difference';
 
 function App() {
   const [currentGame, setCurrentGame] = useState<GameType>('menu');
@@ -27,6 +28,8 @@ function App() {
         return <DotToDotGame onBack={() => setCurrentGame('menu')} />;
       case 'codeword':
         return <CodewordGame onBack={() => setCurrentGame('menu')} />;
+      case 'spot-difference':
+        return <SpotDifferenceGame onBack={() => setCurrentGame('menu')} />;
       default:
         return <MainMenu onGameSelect={setCurrentGame} />;
     }

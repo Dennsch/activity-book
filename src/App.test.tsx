@@ -17,6 +17,7 @@ describe('App Component', () => {
     expect(screen.getByText('🎨 Color Fun')).toBeInTheDocument();
     expect(screen.getByText('🔗 Connect the Dots')).toBeInTheDocument();
     expect(screen.getByText('🔤 Word Detective')).toBeInTheDocument();
+    expect(screen.getByText('🔍 Spot the Difference')).toBeInTheDocument();
   });
 
   test('navigates to math game when clicked', () => {
@@ -31,6 +32,13 @@ describe('App Component', () => {
     const letterButton = screen.getByText('🏎️ Letter Racing');
     fireEvent.click(letterButton);
     expect(screen.getByText('🏎️ Letter Racing! 🏎️')).toBeInTheDocument();
+  });
+
+  test('navigates to spot difference game when clicked', () => {
+    render(<App />);
+    const spotDifferenceButton = screen.getByText('🔍 Spot the Difference');
+    fireEvent.click(spotDifferenceButton);
+    expect(screen.getByText('🔍 Spot the Difference! 🔍')).toBeInTheDocument();
   });
 
   test('back button returns to main menu', () => {
